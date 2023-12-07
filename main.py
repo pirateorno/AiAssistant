@@ -3,6 +3,7 @@ from tkinter import *
 from tkinter import messagebox
 from openai import OpenAI
 import speech_recognition as sr
+import webbrowser
 
 # tkinter
 root = Tk()
@@ -48,6 +49,11 @@ completion = ""
 
 
 def askai():
+    if "Открой ютуб" in text.get() and not "и найди" in text.get():
+        webbrowser.open_new_tab("https://www.youtube.com")
+    elif "Открой ютуб и найди" in text.get():
+        search = text.get().replace("Открой ютуб и найди", "")
+        webbrowser.open_new_tab("https://www.youtube.com/results?search_query=" + search)
     global completion
     completion = client.chat.completions.create(
         model='gpt-3.5-turbo',
