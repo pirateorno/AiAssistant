@@ -5,10 +5,13 @@ from openai import OpenAI
 import speech_recognition as sr
 import webbrowser
 
+
 # tkinter
 root = Tk()
 # tts
 engine = pyttsx3.init()
+for voice in engine.getProperty('voices'):
+    print(voice, voice.id)
 engine.setProperty('voice', "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_RU-RU_IRINA_11.0")
 # openai
 client = ""
